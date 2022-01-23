@@ -12,7 +12,7 @@ def circle_detection(img):
     img = cv2.medianBlur(img,5)
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT_ALT,1.2, 100,
-                                param1=200,param2=0.95, minRadius=10)  
+                                param1=200,param2=0.95, minRadius=60)  
     if circles is not None:
         circles = np.uint16(np.around(circles))
         det = 1
@@ -23,8 +23,8 @@ def circle_detection(img):
             cv2.circle(img,(i[0],i[1]),2,(0,0,255),3)
             # crop image
             # TODO:  Arreglar extremos
-            cropped_image = img[i[1]-i[2]-5:i[1]+i[2]+5,
-                                i[0]-i[2]-5:i[0]+i[2]+5]
+            cropped_image = img[i[1]-i[2]-10:i[1]+i[2]+10,
+                                i[0]-i[2]-10:i[0]+i[2]+10]
     else:
         det = 0 
         cropped_image = None
