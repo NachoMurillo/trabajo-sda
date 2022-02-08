@@ -71,7 +71,7 @@ def change_state(pred_max):
         
 if __name__ == "__main__":
     
-    frame_rate = 1
+    frame_rate = 10
     prev = 0
     captura = cv2.VideoCapture(0)
     ancho = int(captura.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -112,9 +112,9 @@ if __name__ == "__main__":
                             # print("Las predicciones son: ", predictions)
                             # print("La señal predicha es de la clase: ")
                             pred_act.append(pred_max)
-                            #signal_type(pred_act)
+                            signal_type(pred_act)
                             print(pred_max)
-                            change_state(pred_max)
+                            #change_state(pred_max)
                         else:
                             cv2.imshow('video', cimg)
                             #salida.write(cimg)

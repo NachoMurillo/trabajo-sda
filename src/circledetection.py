@@ -11,8 +11,15 @@ import cv2
 def circle_detection(img):
     img = cv2.medianBlur(img,5)
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT_ALT,1.2, 100,
-                                param1=200,param2=0.95, minRadius=60)  
+    #circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT_ALT,1.2, 100,
+                                #param1=200,param2=0.95, minRadius=60)
+    circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 
+                                    2, 
+                                    100, 
+                                    param1=100, 
+                                    param2=250, 
+                                    minRadius=100, 
+                                    maxRadius=200)
     if circles is not None:
         circles = np.uint16(np.around(circles))
         det = 1
